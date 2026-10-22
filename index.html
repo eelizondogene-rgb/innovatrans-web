@@ -215,6 +215,19 @@
 }
 @media(max-width:380px){#booking .booking-fields{grid-template-columns:1fr}#booking .booking-fields .field:nth-child(4){grid-column:auto}}
 
+
+  #booking .vehicle-note{max-width:400px;margin:12px auto 0;font-size:12px;line-height:1.5;color:#65758a;background:#f6f8fc;border:1px solid #e3e9f2;border-radius:10px;padding:10px 12px}
+  #booking .vehicle-plan{max-width:400px;padding:18px 15px}
+  #booking .vehicle-seat-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:9px;align-items:stretch}
+  #booking .vehicle-seat-grid .seat{max-width:none;width:100%;height:51px;border-radius:12px 12px 8px 8px;box-shadow:inset 0 -5px #00000016;touch-action:manipulation}
+  #booking .vehicle-seat-grid .seat:focus-visible{outline:3px solid #1f65c8;outline-offset:2px}
+  #booking .seat-placeholder{min-height:50px;display:grid;place-items:center;font-size:11px;color:#8491a4;text-align:center}
+  #booking .seat-placeholder.driver{background:#e6ebf2;border:1px solid #d5ddea;border-radius:9px;color:#53647c;font-weight:700}
+  #booking .seat-placeholder.aisle{background:transparent}
+  #booking .seat-placeholder.door{background:#fff8e7;border:1px dashed #e6c880;border-radius:8px;color:#987b31;font-weight:700}
+  #booking .vehicle-rear{font-size:10px;text-align:center;letter-spacing:1.7px;color:#93a0af;margin-top:17px}
+  #booking .vehicle-plan .seat-top{margin-bottom:14px}
+  @media(max-width:450px){#booking .vehicle-plan{padding:14px 10px}#booking .vehicle-seat-grid{gap:6px}#booking .vehicle-seat-grid .seat{height:46px;font-size:12px}#booking .seat-placeholder{min-height:46px;font-size:9px}}
 </style>
   <!-- The JS library is fetched over HTTPS. The demo's camera needs HTTPS or localhost. -->
   <script src="https://unpkg.com/@zxing/browser@latest" defer></script>
@@ -285,10 +298,10 @@
 <div class="foot-brand">INNOVA TRANSLOGIC · Prototipo de pruebas · Costa Rica</div>
 
 <section id="booking" class="screen"><div class="screen-panel"><div><h2>Reserva de asientos</h2><p>Elegí una unidad, una persona y tocá un asiento disponible para confirmar.</p></div><span class="screen-badge">Reservas</span></div><div class="card booking-card"><div class="booking-heading"><h2>Elegí tu asiento</h2><span class="screen-badge">Reserva demo</span></div>
-<div class="formgrid booking-fields"><div class="field"><label for="bookingSize">Tipo de vehículo</label><select id="bookingSize"><option value="13">Buseta · 13 pasajeros</option><option value="25">Bus · 25 pasajeros</option></select></div><div class="field"><label for="bookingPerson">Colaborador</label><select id="bookingPerson"></select></div><div class="field"><label for="bookingDate">Fecha del viaje</label><input type="date" id="bookingDate"></div><div class="field"><label for="bookingRoute">Ruta</label><input id="bookingRoute" value="Santa Ana — Walmart (demo)" maxlength="100"></div></div>
+<div class="formgrid booking-fields"><div class="field"><label for="bookingSize">Tipo de vehículo</label><select id="bookingSize"><option value="hiace13">Toyota Hiace 2022 · 13 puestos (provisional)</option><option value="bus22">Bus 22+1 · según croquis (provisional)</option></select></div><div class="field"><label for="bookingPerson">Colaborador</label><select id="bookingPerson"></select></div><div class="field"><label for="bookingDate">Fecha del viaje</label><input type="date" id="bookingDate"></div><div class="field"><label for="bookingRoute">Ruta</label><input id="bookingRoute" value="Santa Ana — Walmart (demo)" maxlength="100"></div></div>
 <div class="seat-guide booking-legend"><span><i style="background:#178468"></i>Disponible</span><span><i style="background:#b63d4a"></i>Reservado</span><span><i style="background:#275daf"></i>Seleccionado</span><span><i style="background:#d69524"></i>Mi reserva</span></div>
-<div class="seat-layout booking-bus"><div class="seat-top"><span class="tag">🚪 Entrada</span><span class="tag">🛞 Chofer</span></div><div class="seat-grid" id="seatsGrid"></div></div>
-<div class="info-status booking-status" id="bookingStatus">Seleccioná un asiento para continuar.</div><div class="actions booking-actions"><button class="btn" id="confirmSeat">Confirmar reserva</button><button class="btn red" id="cancelSeat">Cancelar mi reserva</button></div><div class="mobile-cta"><button class="btn" id="confirmSeatMobile" type="button">Confirmar reserva</button></div><p class="footnote">Distribuciones de asientos ilustrativas, no planos oficiales. El cupo indicado corresponde a pasajeros, sin contar al chofer. Las reservas se guardan únicamente en este navegador.</p></div></section>
+<div class="vehicle-note" id="vehicleNote" role="note"></div><div class="seat-layout booking-bus vehicle-plan"><div class="seat-top"><span class="tag">FRENTE DEL VEHÍCULO</span><span class="tag">Entrada →</span></div><div class="seat-grid vehicle-seat-grid" id="seatsGrid" aria-label="Plano de asientos"></div><div class="vehicle-rear">PARTE TRASERA</div></div>
+<div class="info-status booking-status" id="bookingStatus">Seleccioná un asiento para continuar.</div><div class="actions booking-actions"><button class="btn" id="confirmSeat">Confirmar reserva</button><button class="btn red" id="cancelSeat">Cancelar mi reserva</button></div><div class="mobile-cta"><button class="btn" id="confirmSeatMobile" type="button">Confirmar reserva</button></div><p class="footnote">El bus sigue la referencia fotografiada, pero los puestos 8 en adelante están numerados provisionalmente. El plano Hiace es ilustrativo y debe verificarse físicamente. Reservas guardadas solo en este navegador.</p></div></section>
 <section id="mapdemo" class="screen map-screen">
   <div class="screen-panel map-screen-heading"><div><h2>Mapa en tiempo real</h2><p>Ubicación del dispositivo y puntos de abordaje</p></div><span class="screen-badge">GPS de prueba</span></div>
   <div class="map-main">

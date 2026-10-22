@@ -11,13 +11,31 @@
   const current=()=>scope().find(b=>b.code===$('bookingPerson').value);
   const saveBookings=()=>{try{localStorage.setItem(BOOK,JSON.stringify(bookings));return true}catch{alert('No se pudo guardar la reserva en este navegador.');return false}};
   function fillPeople(){const previous=$('bookingPerson').value;$('bookingPerson').replaceChildren();for(const p of db().people){const o=document.createElement('option');o.value=p.code;o.textContent=p.name+' · '+p.code;$('bookingPerson').append(o)}if([...$('bookingPerson').options].some(o=>o.value===previous))$('bookingPerson').value=previous;}
-  function renderSeats(){fillPeople();const grid=$('seatsGrid');grid.replaceChildren();const max=Number($('bookingSize').value), own=current(), reserved=scope();
-    for(let i=1;i<=Math.ceil(max/4)*4;i++){if((i-1)%4===2){const aisle=document.createElement('div');aisle.className='seat-empty';aisle.textContent='·';aisle.style.textAlign='center';grid.append(aisle)}
-      if(i>max){const empty=document.createElement('div');empty.className='seat-empty';grid.append(empty);continue}
-      const seat=document.createElement('button');seat.className='seat';seat.textContent=String(i).padStart(2,'0');seat.type='button';const owner=reserved.find(b=>b.seat===i);seat.title=owner?(owner.code===$('bookingPerson').value?'Tu asiento reservado':'Asiento ocupado'):'Asiento disponible';if(owner){seat.classList.add(owner.code===$('bookingPerson').value?'mine':'occupied')}if(selected===i&&!owner)seat.classList.add('chosen');seat.disabled=Boolean(owner);seat.onclick=()=>{selected=i;renderSeats()};grid.append(seat);
-    }
-    const free=max-reserved.length;$('bookingStatus').textContent=`${free} de ${max} asientos disponibles. ${own?'Tu reserva: asiento '+own.seat+'. ':''}${selected?'Seleccionaste asiento '+selected+'.':'Elegí un asiento disponible.'}`;
-    $('confirmSeat').disabled=!selected||!$('bookingPerson').value||!$('bookingDate').value||!$('bookingRoute').value.trim();$('cancelSeat').disabled=!own;
+  // Each row contains left-left-aisle-right-right. Null cells remain empty.
+  // Only positions 1-7 are grounded in the provided bus photograph; all remaining numbering is provisional.
+  const layouts={
+    bus22:{label:'Bus 22+1',rows:[['driver',null,'aisle',null,1],[2,3,'aisle',null,8],[4,5,'aisle',null,9],[6,7,'aisle',null,10],[11,12,'aisle',null,13],[14,15,'aisle',null,16],[17,18,'aisle',null,19],[20,21,'aisle',22,null]],note:'Croquis del bus: se respetan los primeros asientos 1–7 visibles en la foto. Los restantes 8–22 son numeración de demostración hasta confirmar el plano completo. 22 plazas de pasajeros + chofer.'},
+    hiace13:{label:'Toyota Hiace 2022',rows:[['driver',null,'aisle',null,1],[2,3,'aisle',4,null],[5,6,'aisle',7,null],[8,9,'aisle',10,null],[11,12,'aisle',13,null]],note:'Toyota Hiace 2022: disposición provisional de 13 pasajeros. Las Hiace pueden tener distintas configuraciones; hay que verificar físicamente filas, puerta y números antes de reservar de verdad.'}
+  };
+  const layout=()=>layouts[$('bookingSize').value]||layouts.hiace13;
+  function renderSeats(){
+    fillPeople();const grid=$('seatsGrid');grid.replaceChildren();const plan=layout();const all=plan.rows.flat().filter(Number.isInteger);const reserved=scope();const own=current();
+    $('vehicleNote').textContent=plan.note;
+    const person=$('bookingPerson').value;
+    for(const row of plan.rows){for(const cell of row){
+      if(!Number.isInteger(cell)){
+        const el=document.createElement('div');el.className='seat-placeholder '+(cell||'aisle');
+        el.textContent=cell==='driver'?'Chofer':cell==='door'?'Puerta':'';grid.append(el);continue;
+      }
+      const owner=reserved.find(b=>b.seat===cell);const seat=document.createElement('button');seat.type='button';seat.className='seat';seat.textContent=String(cell).padStart(2,'0');seat.setAttribute('aria-label',`Asiento ${cell}: ${owner?'reservado':'disponible'}`);
+      if(owner)seat.classList.add(owner.code===person?'mine':'occupied');
+      if(selected===cell&&!owner)seat.classList.add('chosen');seat.disabled=!!owner;
+      seat.onclick=()=>{selected=cell;renderSeats()};grid.append(seat);
+    }}
+    const free=all.length-reserved.length;
+    $('bookingStatus').textContent=`${plan.label} · ${free} de ${all.length} asientos libres. ${own?'Tu reserva: '+own.seat+'. ':''}${selected?'Asiento elegido: '+selected+'.':'Seleccioná un asiento.'}`;
+    $('confirmSeat').disabled=!selected||!person||!$('bookingDate').value||!$('bookingRoute').value.trim();$('cancelSeat').disabled=!own;
+    if($('confirmSeatMobile'))$('confirmSeatMobile').disabled=$('confirmSeat').disabled;
   }
   $('confirmSeat').onclick=()=>{const code=$('bookingPerson').value,key=bookingKey();if(!selected||!code)return;if(scope().some(b=>b.seat===selected)){alert('Ese asiento ya está reservado.');renderSeats();return}bookings=bookings.filter(b=>!(b.key===key&&b.code===code));bookings.push({key,code,seat:selected,createdAt:new Date().toISOString()});if(saveBookings()){selected=null;renderSeats();alert('Reserva demo confirmada. Solo se guardó en este dispositivo.')}};
   $('cancelSeat').onclick=()=>{const code=$('bookingPerson').value,key=bookingKey();bookings=bookings.filter(b=>!(b.key===key&&b.code===code));if(saveBookings()){selected=null;renderSeats()}};
