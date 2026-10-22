@@ -103,7 +103,37 @@
   @media(min-width:791px) and (max-width:1150px){.cols{grid-template-columns:1fr}.demo-grid{grid-template-columns:1fr}.module-cards{grid-template-columns:1fr 1fr}}
   @media(max-width:350px){.brand{font-size:12px!important}.head .pill{padding:5px}.quickstat{padding:11px}.seat-layout{padding:12px 9px}.seat-grid{gap:5px;grid-template-columns:1fr 1fr 18px 1fr 1fr}}
 
-  </style>
+  
+/* INNOVATRANS · mapa móvil de operación */
+.map-main{display:grid;grid-template-columns:minmax(0,1.45fr) minmax(320px,.65fr);gap:16px;align-items:start}
+.map-stage{position:relative;min-width:0;overflow:hidden;border:1px solid #e0e7f1;border-radius:18px;background:#e9f0f7;box-shadow:0 5px 24px #091e3c12}
+.map-stage .map-area{height:min(68vh,650px);min-height:430px;border:0;border-radius:0}
+.map-floating-label{position:absolute;z-index:500;top:15px;left:15px;display:grid;grid-template-columns:10px auto;column-gap:9px;align-items:center;padding:11px 14px;background:#fffffff2;border-radius:12px;box-shadow:0 5px 24px #0c234226;max-width:calc(100% - 110px)}
+.map-floating-label strong{font-size:13px;line-height:1.15;color:#122b4c}.map-floating-label small{font-size:10px;grid-column:2;color:#718199}.map-live-dot{width:9px;height:9px;border-radius:50%;background:#2eaa77;grid-row:1/3}
+.map-float-controls{position:absolute;z-index:500;right:14px;top:14px;display:flex;flex-direction:column;gap:9px}
+.map-round-btn{width:44px;height:44px;border:1px solid #e0e7f1;border-radius:12px;background:#fff;color:#164477;font-size:26px;box-shadow:0 3px 16px #0b234023;line-height:1}
+.map-legend{position:absolute;z-index:500;bottom:18px;left:15px;display:flex;gap:14px;flex-wrap:wrap;padding:10px 12px;border-radius:11px;background:#fffffff5;box-shadow:0 5px 18px #0c234223;font-size:11px;color:#405a77}.map-legend span{display:flex;align-items:center;gap:6px}.map-legend i{width:9px;height:9px;border-radius:50%;display:inline-block}.legend-bus{background:#136bc0}.legend-boarding{background:#ca2537}
+.map-bottom-panel{background:#fff;border:1px solid #e0e7f1;border-radius:18px;padding:20px;box-shadow:0 5px 24px #091e3c0b}.map-bottom-header{display:flex;align-items:center;justify-content:space-between;gap:12px}.map-bottom-header h3{margin:3px 0 0;font-size:19px;color:#102a4d}.map-eyebrow{font-size:10px;font-weight:800;letter-spacing:.08em;color:#788ba3}.map-status-chip{font-size:11px;color:#516783;background:#eef2f7;padding:7px 10px;border-radius:20px;white-space:nowrap}.map-status-line{font-size:13px;color:#566a83;line-height:1.5;margin:15px 0}.map-primary-actions{display:grid;grid-template-columns:1fr auto;gap:9px}.map-primary-actions .btn{min-height:47px}.map-details{margin-top:19px;border-top:1px solid #e8edf4;padding-top:15px}.map-details summary{cursor:pointer;display:flex;justify-content:space-between;color:#173d6d;font-size:13px;font-weight:750;list-style:none}.map-details summary::-webkit-details-marker{display:none}.map-details-inner{padding-top:12px}.map-disclaimer{font-size:11px;color:#8490a3;line-height:1.6;margin:19px 0 0}
+@media(max-width:790px){
+ body:has(#mapdemo.active) main{padding:0 0 90px}
+ #mapdemo .map-screen-heading{margin:0;background:#fff;padding:12px 17px;border-bottom:1px solid #e3eaf3}
+ #mapdemo .map-screen-heading h2{font-size:17px;margin:0}
+ #mapdemo .map-screen-heading p{font-size:11px;margin:3px 0 0}
+ #mapdemo .screen-badge{font-size:10px;padding:5px 9px}
+ .map-main{display:block;position:relative}
+ .map-stage{border:none;border-radius:0;box-shadow:none;overflow:hidden}
+ .map-stage .map-area{height:calc(100dvh - 240px);min-height:385px;max-height:none}
+ .map-floating-label{top:13px;left:12px;padding:10px 12px}
+ .map-float-controls{top:13px;right:12px}
+ .map-legend{bottom:12px;left:12px;gap:11px;padding:9px 12px}
+ .map-bottom-panel{position:relative;z-index:10;margin:-4px 0 0;border-radius:22px 22px 0 0;border-left:0;border-right:0;border-bottom:0;padding:18px 18px 21px;box-shadow:0 -8px 26px #0b234019}
+ .map-bottom-panel:before{content:'';display:block;margin:-8px auto 13px;width:36px;height:4px;border-radius:8px;background:#d7e1ec}
+ .map-bottom-header h3{font-size:16px}.map-status-line{margin:9px 0 12px;font-size:12px}
+ .map-primary-actions .btn{min-height:45px}
+ .map-details{margin-top:13px;padding-top:12px}.map-disclaimer{margin-top:12px;font-size:10px}
+}
+@media(max-width:380px){.map-stage .map-area{height:calc(100dvh - 260px);min-height:330px}.map-legend{font-size:10px}.map-floating-label strong{font-size:11px}}
+</style>
   <!-- The JS library is fetched over HTTPS. The demo's camera needs HTTPS or localhost. -->
   <script src="https://unpkg.com/@zxing/browser@latest" defer></script>
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzxjpNDvm5tfwSEFq8fLaFqv6w1l0p0=" crossorigin="">
@@ -163,8 +193,27 @@
 <div class="seat-guide"><span><i style="background:#178468"></i>Disponible</span><span><i style="background:#b63d4a"></i>Reservado</span><span><i style="background:#275daf"></i>Seleccionado</span><span><i style="background:#d69524"></i>Mi reserva</span></div>
 <div class="seat-layout"><div class="seat-top"><span class="tag">🚪 Entrada</span><span class="tag">🛞 Chofer</span></div><div class="seat-grid" id="seatsGrid"></div></div>
 <div class="info-status" id="bookingStatus">Seleccioná un asiento para continuar.</div><div class="actions"><button class="btn" id="confirmSeat">Confirmar reserva</button><button class="btn red" id="cancelSeat">Cancelar mi reserva</button></div><div class="mobile-cta"><button class="btn" id="confirmSeatMobile" type="button">Confirmar reserva</button></div><p class="footnote">Distribuciones de asientos ilustrativas, no planos oficiales. El cupo indicado corresponde a pasajeros, sin contar al chofer. Las reservas se guardan únicamente en este navegador.</p></div></section>
-<section id="mapdemo" class="screen"><div class="screen-panel"><div><h2>Mapa y ubicación</h2><p>Ideal para mostrar que el dispositivo puede tomar ubicación y marcar el punto del abordaje.</p></div><span class="screen-badge">Ubicación</span></div><div class="demo-grid"><div class="card"><h2>Mapa de rutas y abordajes</h2><p class="hint">Permite usar el GPS real del teléfono y señalar los puntos donde se registró un gafete. El mapa necesita Internet para cargar sus imágenes.</p><div class="map-area" id="routeMap"></div><div class="info-status" id="gpsStatus" role="status">GPS detenido. Presioná «Activar GPS» y aceptá el permiso.</div><div class="actions"><button class="btn" id="enableGps">Activar GPS</button><button class="btn secondary" id="stopGps">Detener GPS</button></div><div class="actions" style="margin-top:8px"><button class="btn outline" id="demoRoute">Mostrar recorrido de ejemplo</button><button class="btn outline" id="centerGps">Centrar mi posición</button></div><div class="demo-warning">📌 Los puntos de escaneo corresponden al <strong>teléfono o tablet que lee el gafete</strong>, no al GPS del pasajero. Si el GPS no está disponible, el abordaje se guarda sin coordenadas.</div></div>
-<div class="card"><h2>Monitoreo del viaje</h2><p class="hint">Ubicación actual del dispositivo y registros capturados durante la ruta.</p><div class="info-status" id="gpsDetails">Todavía no se ha recibido una ubicación.</div><h3>Últimos abordajes con ubicación</h3><div id="gpsRecords" class="demo-list gps-log"><div class="empty">Aún no hay escaneos.</div></div><p class="footnote">La ubicación real solo se lee mientras esté permitido y el navegador mantenga el seguimiento activo. No hay seguimiento remoto entre dispositivos ni GPS fiable en segundo plano.</p></div></div></section>
+<section id="mapdemo" class="screen map-screen">
+  <div class="screen-panel map-screen-heading"><div><h2>Mapa en tiempo real</h2><p>Ubicación del dispositivo y puntos de abordaje</p></div><span class="screen-badge">GPS de prueba</span></div>
+  <div class="map-main">
+    <div class="map-stage">
+      <div class="map-area" id="routeMap" aria-label="Mapa de rutas y abordajes"></div>
+      <div class="map-floating-label"><span class="map-live-dot"></span><strong>Seguimiento de ruta</strong><small>INNOVATRANS</small></div>
+      <div class="map-float-controls">
+        <button class="map-round-btn" id="centerGps" title="Centrar mi ubicación" aria-label="Centrar mi ubicación">◎</button>
+        <button class="map-round-btn" id="demoRoute" title="Mostrar recorrido de ejemplo" aria-label="Mostrar recorrido de ejemplo">⌁</button>
+      </div>
+      <div class="map-legend"><span><i class="legend-bus"></i> Mi ubicación</span><span><i class="legend-boarding"></i> Abordaje</span></div>
+    </div>
+    <div class="map-bottom-panel">
+      <div class="map-bottom-header"><div><span class="map-eyebrow">ESTADO DEL DISPOSITIVO</span><h3>Monitoreo GPS</h3></div><span class="map-status-chip" id="gpsChip">Desactivado</span></div>
+      <p class="map-status-line" id="gpsStatus" role="status">Activá el GPS para mostrar tu ubicación.</p>
+      <div class="map-primary-actions"><button class="btn" id="enableGps">Activar GPS</button><button class="btn secondary" id="stopGps">Detener</button></div>
+      <details class="map-details"><summary>Ver últimos abordajes <span>⌄</span></summary><div class="map-details-inner"><div class="info-status" id="gpsDetails">Todavía no se ha recibido una ubicación.</div><div id="gpsRecords" class="demo-list gps-log"><div class="empty">Aún no hay escaneos.</div></div></div></details>
+      <p class="map-disclaimer">El GPS indica la posición del teléfono que escanea, no la del pasajero. Esta demo no comparte ubicaciones entre dispositivos.</p>
+    </div>
+  </div>
+</section>
 
 </main>
 </div>
