@@ -24,4 +24,3 @@ Esta demo parte del escáner anterior y añade reserva visual para vehículos de
 - **Plano de asientos:** distribución de ejemplo, debe adaptarse a cada modelo de bus.
 - **Mapa:** OpenStreetMap requiere Internet. La polilínea demo es ilustrativa, no navegación o seguimiento remoto. Las librerías externas ZXing y Leaflet se descargan de una CDN.
 - **Privacidad:** usar únicamente pasajeros y códigos inventados en un sitio público; no hay cuentas ni control de acceso.
-Demo de reservas y GPS de INNOVATRANS.
