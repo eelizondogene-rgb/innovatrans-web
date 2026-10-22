@@ -20,6 +20,57 @@
     @media(max-width:580px){.quickstats{grid-template-columns:repeat(2,minmax(0,1fr))}.quickstat:last-child{grid-column:span 2}.filter-grid{grid-template-columns:1fr}.brand-photo{height:47px;width:47px}.head .pill{font-size:9px}.brand{font-size:15px}}
   
     .seat-layout{max-width:385px;margin:14px auto;background:#edf3fa;border:2px solid #cedbef;border-radius:22px;padding:22px 24px}.seat-top{display:flex;justify-content:space-between;align-items:center;border-bottom:2px dashed #cad7e7;padding-bottom:12px;margin-bottom:14px}.seat-grid{display:grid;grid-template-columns:1fr 1fr 38px 1fr 1fr;gap:9px;justify-items:center}.seat{border:0;width:100%;max-width:60px;height:47px;border-radius:11px 11px 7px 7px;background:#178468;color:#fff;font-weight:800;box-shadow:inset 0 -5px #0002}.seat.occupied{background:#b63d4a}.seat.chosen{background:#275daf;outline:3px solid #9ebff9}.seat.mine{background:#d69524}.seat:disabled{opacity:1;cursor:not-allowed}.seat-guide{display:flex;gap:12px;flex-wrap:wrap;font-size:12px}.seat-guide span{display:inline-flex;gap:5px;align-items:center}.seat-guide i{height:12px;width:12px;border-radius:3px;display:inline-block}.demo-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}.map-area{height:390px;border-radius:14px;background:#e8eef5;overflow:hidden;z-index:0}.info-status{padding:12px;border-radius:10px;background:#eaf1fb;font-size:13px;margin:12px 0}.demo-list{display:grid;gap:8px}.demo-item{background:#f5f8fc;padding:11px;border-radius:10px;font-size:13px}.demo-item b{display:block}.demo-warning{border-left:4px solid #d5a039;padding:12px;background:#fff8e8;font-size:13px;line-height:1.6;margin:14px 0}.field input[type=checkbox]{width:auto}.tag{display:inline-block;border-radius:20px;background:#e3eefa;color:#1b4474;padding:4px 9px;font-size:12px}.seat-empty{min-height:47px}.gps-log{max-height:260px;overflow:auto}@media(max-width:760px){.demo-grid{grid-template-columns:1fr}.map-area{height:340px}}
+
+    body{line-height:1.45}
+    header{position:sticky;top:0;z-index:50;box-shadow:0 6px 18px #04132518}
+    .hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:16px;margin-bottom:16px}
+    .hero-card{background:linear-gradient(135deg,#0f2547,#183f72);color:#fff;border-radius:22px;padding:20px;border:1px solid #244d86;box-shadow:0 10px 24px #0b1c3a1e}
+    .hero-card h1{margin:0 0 8px;font-size:clamp(23px,4vw,32px);line-height:1.08}
+    .hero-card p{margin:0;color:#d9e6f5;font-size:14px;max-width:62ch}
+    .hero-badges{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}.hero-badges span{display:inline-flex;align-items:center;gap:6px;background:#ffffff14;border:1px solid #ffffff26;border-radius:999px;padding:7px 10px;font-size:12px}
+    .launch-wrap{background:#fff;border:1px solid var(--line);border-radius:22px;padding:18px;box-shadow:0 3px 12px #0a23430b}
+    .launch-head{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:10px}.launch-head h2{font-size:18px;margin:0}.launch-head span{font-size:12px;color:var(--muted)}
+    .launcher-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+    .launch-card{border:1px solid #d7e2ef;border-radius:18px;padding:14px;background:linear-gradient(180deg,#fbfdff,#f2f7fd);text-align:left;display:flex;flex-direction:column;gap:7px;min-height:120px}
+    .launch-card strong{font-size:15px;color:var(--navy)}.launch-card small{font-size:12px;color:var(--muted);line-height:1.45}.launch-card .go{margin-top:auto;color:#1f4f87;font-weight:800;font-size:13px}
+    .tabs{position:sticky;top:76px;z-index:30;background:linear-gradient(180deg,var(--bg) 82%,transparent);padding:4px 0 12px;margin-bottom:14px;scroll-snap-type:x proximity}
+    .tab{display:inline-flex;align-items:center;gap:7px;scroll-snap-align:start;min-height:46px}
+    .screen{scroll-margin-top:145px}
+    .screen-panel{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:12px}.screen-panel h2{margin:0;font-size:21px}.screen-panel p{margin:5px 0 0;color:var(--muted);font-size:13px;max-width:62ch}.screen-badge{background:#edf3fa;color:#34567c;border:1px solid #d9e6f4;padding:7px 10px;border-radius:999px;font-size:12px;font-weight:700}
+    .mobile-cta{display:none}
+    .actions .btn{min-height:48px}
+    .card h2{display:flex;align-items:center;gap:8px}
+    .livebar,.info-status,.feedback,.countbox,.trip-banner{border-radius:15px}
+    .card,.quickstat{box-shadow:0 8px 24px #0b1c3a10}
+    .trip-banner span{color:var(--muted)} .trip-banner strong{color:var(--navy)} .trip-banner.active strong{color:#146a45}
+    .camera::before{inset:24% 8%}
+    .seat-layout{max-width:430px}
+    .seat{min-height:52px;max-width:66px;font-size:14px}
+    .map-area{min-height:420px}
+    .fab-bar{display:none}
+    @media(max-width:900px){.hero-grid{grid-template-columns:1fr}.launch-wrap{order:2}}
+    @media(max-width:760px){
+      header{position:sticky;top:0}
+      main{padding:0 12px 84px}
+      .hero-card,.launch-wrap,.card,.quickstat{border-radius:18px}
+      .hero-card{padding:18px}
+      .tabs{top:74px}
+      .quickstats{grid-template-columns:repeat(2,minmax(0,1fr))}
+      .quickstat:last-child{grid-column:span 2}
+      .screen-panel h2{font-size:18px}
+      .camera{aspect-ratio:1/1}
+      .map-area{height:300px;min-height:300px}
+      .seat-layout{padding:18px 14px;border-radius:18px}
+      .seat-grid{gap:7px;grid-template-columns:1fr 1fr 24px 1fr 1fr}
+      .seat{min-height:50px;max-width:none;height:50px;border-radius:12px;font-size:13px}
+      .mobile-cta{display:block;position:sticky;bottom:12px;z-index:20;margin-top:14px}
+      .mobile-cta .btn{width:100%;min-height:52px;border-radius:14px;box-shadow:0 10px 22px #153d7130}
+      .launcher-grid{grid-template-columns:1fr 1fr}
+      .fab-bar{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;position:fixed;left:10px;right:10px;bottom:10px;z-index:60;background:#ffffffea;backdrop-filter:blur(8px);border:1px solid #dce6f2;border-radius:18px;padding:10px;box-shadow:0 10px 28px #09192c1c}
+      .fab-mini{border:0;background:#eff4fb;color:#153d71;padding:11px 8px;border-radius:14px;font-weight:800;font-size:12px}
+      .fab-mini.active{background:#153d71;color:#fff}
+    }
+
   </style>
   <!-- The JS library is fetched over HTTPS. The demo's camera needs HTTPS or localhost. -->
   <script src="https://unpkg.com/@zxing/browser@latest" defer></script>
@@ -32,8 +83,25 @@
   <div class="banner"><strong>Prueba inicial:</strong> los datos se guardan solo en este navegador. No utilicés información personal real hasta contar con acceso seguro, autorización y base de datos central.</div>
   <div id="activeTripBanner" class="trip-banner" role="status"><div><strong>Sin ruta activa</strong><span>Configurá una ruta para iniciar el registro.</span></div><span>🚌 INNOVATRANS</span></div>
   <div class="quickstats"><div class="quickstat"><small>Abordajes de esta ruta</small><b id="topTripCount">0</b></div><div class="quickstat"><small>Viajes guardados</small><b id="topTripsCount">0</b></div><div class="quickstat"><small>Último abordaje</small><b class="tiny-value" id="lastBoarding">Sin registros</b></div></div>
-  <nav class="tabs" aria-label="Módulos"><button class="tab active" data-page="scanner">📷 Abordaje</button><button class="tab" data-page="people">👥 Pasajeros de prueba</button><button class="tab" data-page="reports">📊 Reportes</button><button class="tab" data-page="booking">💺 Reservas</button><button class="tab" data-page="mapdemo">📍 Mapa GPS</button></nav>
+  <div class="hero-grid">
+    <div class="hero-card">
+      <h1>Demo visual de INNOVATRANS</h1>
+      <p>Probá el flujo principal de una manera más simple: iniciá una ruta, escaneá gafetes, reservá asientos y revisá el mapa GPS desde el teléfono o la computadora.</p>
+      <div class="hero-badges"><span>📱 Optimizado para celular</span><span>💺 Reservas tipo cine</span><span>📍 GPS de prueba</span></div>
+    </div>
+    <div class="launch-wrap">
+      <div class="launch-head"><h2>Accesos rápidos</h2><span>Elegí qué querés hacer</span></div>
+      <div class="launcher-grid">
+        <button class="launch-card quick-jump" data-page="scanner" type="button"><strong>📷 Escanear abordajes</strong><small>Iniciar cámara, lector o registro manual del gafete.</small><span class="go">Abrir módulo →</span></button>
+        <button class="launch-card quick-jump" data-page="booking" type="button"><strong>💺 Reservar asiento</strong><small>Mostrar asientos de la buseta o bus como demo.</small><span class="go">Abrir módulo →</span></button>
+        <button class="launch-card quick-jump" data-page="mapdemo" type="button"><strong>📍 Ver mapa GPS</strong><small>Probar ubicación real y revisar puntos de escaneo.</small><span class="go">Abrir módulo →</span></button>
+        <button class="launch-card quick-jump" data-page="people" type="button"><strong>👥 Cargar pasajeros</strong><small>Guardar pasajeros de prueba para asociar el código.</small><span class="go">Abrir módulo →</span></button>
+      </div>
+    </div>
+  </div>
+  <nav class="tabs" aria-label="Módulos"><button class="tab active" data-page="scanner">📷 Abordaje</button><button class="tab" data-page="people">👥 Pasajeros</button><button class="tab" data-page="reports">📊 Reportes</button><button class="tab" data-page="booking">💺 Reservas</button><button class="tab" data-page="mapdemo">📍 Mapa GPS</button></nav>
   <section id="scanner" class="screen active">
+    <div class="screen-panel"><div><h2>📷 Registro de abordajes</h2><p>Diseñado para que el chofer o monitoreo escanee rápido, con cámara o lector externo.</p></div><span class="screen-badge">Módulo principal</span></div>
     <div class="cols">
       <div class="card">
         <h2>Escáner de gafetes</h2>
@@ -49,18 +117,18 @@
       </div>
     </div>
   </section>
-  <section id="people" class="screen"><div class="card"><h2>Pasajeros de prueba</h2><p class="hint">Para poder mostrar nombres, cada código de barras debe estar asociado previamente a una persona. En esta demo registrá solo datos inventados. Para gafetes reales necesitaremos un listado autorizado.</p><div class="formgrid"><div class="field"><label for="personName">Nombre de prueba</label><input id="personName" placeholder="Ej. Pasajero de prueba 1" maxlength="100"></div><div class="field"><label for="personBarcode">Código de barras</label><input id="personBarcode" placeholder="Ej. 123456789012" maxlength="150"></div></div><div class="actions"><button id="savePerson" class="btn">Guardar pasajero</button><button id="useLastCode" class="btn secondary">Usar último código leído</button></div><p class="hint" id="personMessage" aria-live="polite"></p><div class="section-title" style="margin-top:20px"><h3 style="margin:0">Pasajeros registrados</h3><span class="hint" id="peopleTotal"></span></div><div id="peopleList"></div></div></section>
-  <section id="reports" class="screen"><div class="card"><h2>Reporte de abordajes</h2><p class="hint">Incluye fecha, hora, pasajero, código, ruta, unidad y chofer. Los registros solo están en este dispositivo y son de prueba.</p><div class="countbox"><div><div class="labelstat">Total de abordajes guardados</div><div class="hint" id="tripsTotal">0 viajes</div></div><div class="count" id="totalRecords">0</div></div><div class="rowtools"><input type="search" id="filter" placeholder="Buscar pasajero, ruta o chofer"><button class="btn" id="exportCsv">⬇ Exportar CSV filtrado</button></div>
+  <section id="people" class="screen"><div class="screen-panel"><div><h2>👥 Pasajeros de prueba</h2><p>Asociá nombres ficticios a códigos de barras para que la demo muestre identificación.</p></div><span class="screen-badge">Datos locales</span></div><div class="card"><h2>Pasajeros de prueba</h2><p class="hint">Para poder mostrar nombres, cada código de barras debe estar asociado previamente a una persona. En esta demo registrá solo datos inventados. Para gafetes reales necesitaremos un listado autorizado.</p><div class="formgrid"><div class="field"><label for="personName">Nombre de prueba</label><input id="personName" placeholder="Ej. Pasajero de prueba 1" maxlength="100"></div><div class="field"><label for="personBarcode">Código de barras</label><input id="personBarcode" placeholder="Ej. 123456789012" maxlength="150"></div></div><div class="actions"><button id="savePerson" class="btn">Guardar pasajero</button><button id="useLastCode" class="btn secondary">Usar último código leído</button></div><p class="hint" id="personMessage" aria-live="polite"></p><div class="section-title" style="margin-top:20px"><h3 style="margin:0">Pasajeros registrados</h3><span class="hint" id="peopleTotal"></span></div><div id="peopleList"></div></div></section>
+  <section id="reports" class="screen"><div class="screen-panel"><div><h2>📊 Reportes</h2><p>Consultá, filtrá y exportá los abordajes guardados en este dispositivo.</p></div><span class="screen-badge">Exportación CSV</span></div><div class="card"><h2>Reporte de abordajes</h2><p class="hint">Incluye fecha, hora, pasajero, código, ruta, unidad y chofer. Los registros solo están en este dispositivo y son de prueba.</p><div class="countbox"><div><div class="labelstat">Total de abordajes guardados</div><div class="hint" id="tripsTotal">0 viajes</div></div><div class="count" id="totalRecords">0</div></div><div class="rowtools"><input type="search" id="filter" placeholder="Buscar pasajero, ruta o chofer"><button class="btn" id="exportCsv">⬇ Exportar CSV filtrado</button></div>
     <div class="filter-grid"><div><label for="dateFrom">Desde</label><input id="dateFrom" type="date"></div><div><label for="dateTo">Hasta</label><input id="dateTo" type="date"></div></div><p class="hint" id="filterCount" aria-live="polite">Mostrando todos los registros.</p><div class="tablewrap"><table><thead><tr><th>Fecha</th><th>Hora</th><th>Pasajero</th><th>Ruta</th><th>Chofer</th><th>Unidad</th></tr></thead><tbody id="reportBody"></tbody></table></div><p class="footnote">El CSV se abre en Excel. Este prototipo no envía correos, no sincroniza entre buses y no tiene todavía control de usuarios. Esas funciones se incorporarán en el sistema con servidor central.</p></div></section>
   <p class="footnote">INNOVATRANS Web · Prototipo funcional para pruebas técnicas con información ficticia. Se necesita conexión para cargar el lector de cámara y HTTPS (o localhost) para solicitar acceso a ella.</p>
 <div class="foot-brand">INNOVA TRANSLOGIC · Prototipo de pruebas · Costa Rica</div>
 
-<section id="booking" class="screen"><div class="card"><h2>💺 Reserva visual de asientos</h2><p class="hint">Elegí una unidad y un pasajero de prueba para reservar un asiento. Es una demostración local: otros celulares no ven la reserva.</p>
+<section id="booking" class="screen"><div class="screen-panel"><div><h2>💺 Reserva visual de asientos</h2><p>Elegí una unidad, una persona y tocá un asiento disponible para confirmar.</p></div><span class="screen-badge">Demo tipo cine</span></div><div class="card"><h2>💺 Reserva visual de asientos</h2><p class="hint">Elegí una unidad y un pasajero de prueba para reservar un asiento. Es una demostración local: otros celulares no ven la reserva.</p>
 <div class="formgrid"><div class="field"><label for="bookingSize">Tipo de vehículo</label><select id="bookingSize"><option value="13">Buseta · 13 pasajeros</option><option value="25">Bus · 25 pasajeros</option></select></div><div class="field"><label for="bookingPerson">Colaborador</label><select id="bookingPerson"></select></div><div class="field"><label for="bookingDate">Fecha del viaje</label><input type="date" id="bookingDate"></div><div class="field"><label for="bookingRoute">Ruta</label><input id="bookingRoute" value="Santa Ana — Walmart (demo)" maxlength="100"></div></div>
 <div class="seat-guide"><span><i style="background:#178468"></i>Disponible</span><span><i style="background:#b63d4a"></i>Reservado</span><span><i style="background:#275daf"></i>Seleccionado</span><span><i style="background:#d69524"></i>Mi reserva</span></div>
 <div class="seat-layout"><div class="seat-top"><span class="tag">🚪 Entrada</span><span class="tag">🛞 Chofer</span></div><div class="seat-grid" id="seatsGrid"></div></div>
-<div class="info-status" id="bookingStatus">Seleccioná un asiento para continuar.</div><div class="actions"><button class="btn" id="confirmSeat">Confirmar reserva</button><button class="btn red" id="cancelSeat">Cancelar mi reserva</button></div><p class="footnote">Distribuciones de asientos ilustrativas, no planos oficiales. El cupo indicado corresponde a pasajeros, sin contar al chofer. Las reservas se guardan únicamente en este navegador.</p></div></section>
-<section id="mapdemo" class="screen"><div class="demo-grid"><div class="card"><h2>📍 Mapa de rutas y abordajes</h2><p class="hint">Permite usar el GPS real del teléfono y señalar los puntos donde se registró un gafete. El mapa necesita Internet para cargar sus imágenes.</p><div class="map-area" id="routeMap"></div><div class="info-status" id="gpsStatus" role="status">GPS detenido. Presioná «Activar GPS» y aceptá el permiso.</div><div class="actions"><button class="btn" id="enableGps">📡 Activar GPS real</button><button class="btn secondary" id="stopGps">Detener GPS</button></div><div class="actions" style="margin-top:8px"><button class="btn outline" id="demoRoute">🗺️ Mostrar recorrido de ejemplo</button><button class="btn outline" id="centerGps">🎯 Centrar mi posición</button></div><div class="demo-warning">📌 Los puntos de escaneo corresponden al <strong>teléfono o tablet que lee el gafete</strong>, no al GPS del pasajero. Si el GPS no está disponible, el abordaje se guarda sin coordenadas.</div></div>
+<div class="info-status" id="bookingStatus">Seleccioná un asiento para continuar.</div><div class="actions"><button class="btn" id="confirmSeat">Confirmar reserva</button><button class="btn red" id="cancelSeat">Cancelar mi reserva</button></div><div class="mobile-cta"><button class="btn" id="confirmSeatMobile" type="button">✅ Confirmar reserva</button></div><p class="footnote">Distribuciones de asientos ilustrativas, no planos oficiales. El cupo indicado corresponde a pasajeros, sin contar al chofer. Las reservas se guardan únicamente en este navegador.</p></div></section>
+<section id="mapdemo" class="screen"><div class="screen-panel"><div><h2>📍 Mapa GPS y ruta</h2><p>Ideal para mostrar que el dispositivo puede tomar ubicación y marcar el punto del abordaje.</p></div><span class="screen-badge">Prueba GPS</span></div><div class="demo-grid"><div class="card"><h2>📍 Mapa de rutas y abordajes</h2><p class="hint">Permite usar el GPS real del teléfono y señalar los puntos donde se registró un gafete. El mapa necesita Internet para cargar sus imágenes.</p><div class="map-area" id="routeMap"></div><div class="info-status" id="gpsStatus" role="status">GPS detenido. Presioná «Activar GPS» y aceptá el permiso.</div><div class="actions"><button class="btn" id="enableGps">📡 Activar GPS real</button><button class="btn secondary" id="stopGps">Detener GPS</button></div><div class="actions" style="margin-top:8px"><button class="btn outline" id="demoRoute">🗺️ Mostrar recorrido de ejemplo</button><button class="btn outline" id="centerGps">🎯 Centrar mi posición</button></div><div class="demo-warning">📌 Los puntos de escaneo corresponden al <strong>teléfono o tablet que lee el gafete</strong>, no al GPS del pasajero. Si el GPS no está disponible, el abordaje se guarda sin coordenadas.</div></div>
 <div class="card"><h2>🚌 Monitoreo del viaje</h2><p class="hint">Ubicación actual del dispositivo y registros capturados durante la ruta.</p><div class="info-status" id="gpsDetails">Todavía no se ha recibido una ubicación.</div><h3>Últimos abordajes con ubicación</h3><div id="gpsRecords" class="demo-list gps-log"><div class="empty">Aún no hay escaneos.</div></div><p class="footnote">La ubicación real solo se lee mientras esté permitido y el navegador mantenga el seguimiento activo. No hay seguimiento remoto entre dispositivos ni GPS fiable en segundo plano.</p></div></div></section>
 
 </main>
@@ -116,7 +184,8 @@
     const peopleList=$('peopleList');peopleList.replaceChildren();db.people.forEach(p=>{const item=document.createElement('div');item.className='person';const av=document.createElement('div');av.className='avatar';av.textContent=p.name.charAt(0).toUpperCase();const body=document.createElement('div');body.style.flex='1';const name=document.createElement('div');name.className='name';name.textContent=p.name;const code=document.createElement('small');code.textContent=`Código: ${p.code}`;body.append(name,code);const remove=document.createElement('button');remove.className='mini-btn';remove.textContent='Eliminar';remove.addEventListener('click',()=>{if(confirm('¿Eliminar este pasajero de prueba?')){db.people=db.people.filter(x=>x.code!==p.code);save();render();}});item.append(av,body,remove);peopleList.append(item);});
     $('totalRecords').textContent=db.records.length;$('tripsTotal').textContent=`${db.trips.length} viajes creados`;const tbody=$('reportBody');tbody.replaceChildren();const records=filteredRecords();$('filterCount').textContent=`Mostrando ${records.length} de ${db.records.length} abordajes guardados`;
     if(!records.length){const row=document.createElement('tr'),cell=document.createElement('td');cell.colSpan=6;cell.textContent='No hay abordajes para mostrar.';row.append(cell);tbody.append(row);}else{records.forEach(r=>{const row=document.createElement('tr');[formatDate(r.at),formatTime(r.at),r.name,r.route,r.driver,r.bus].forEach(v=>{const cell=document.createElement('td');cell.textContent=v;row.append(cell);});tbody.append(row);});}}
-  document.querySelectorAll('.tab').forEach(btn=>btn.addEventListener('click',()=>{if(btn.dataset.page!=='scanner' && controls)stopScan();document.querySelectorAll('.tab').forEach(x=>x.classList.toggle('active',x===btn));document.querySelectorAll('.screen').forEach(x=>x.classList.toggle('active',x.id===btn.dataset.page));render();}));
+  function switchPage(page){if(page!=='scanner' && controls)stopScan();document.querySelectorAll('[data-page]').forEach(x=>{if(x.classList.contains('tab')||x.classList.contains('fab-mini'))x.classList.toggle('active',x.dataset.page===page)});document.querySelectorAll('.screen').forEach(x=>x.classList.toggle('active',x.id===page));if(page==='booking' && $('confirmSeatMobile'))$('confirmSeatMobile').onclick=()=>$('confirmSeat').click();render();window.scrollTo({top:0,behavior:'smooth'});} 
+  document.querySelectorAll('.tab,.quick-jump,.fab-mini').forEach(btn=>btn.addEventListener('click',()=>switchPage(btn.dataset.page)));
   $('newTrip').addEventListener('click',()=>{const route=$('route').value.trim(),driver=$('driver').value.trim(),bus=$('bus').value.trim();if(!route||!driver){showFeedback('Datos faltantes','Ingresá el nombre de la ruta y del chofer.','warn');return;}if(getTrip())return;db.activeTripId=crypto.randomUUID?crypto.randomUUID():String(Date.now());db.trips.push({id:db.activeTripId,route,driver,bus:bus||'Sin unidad',start:new Date().toISOString(),end:null});save();showFeedback('Ruta iniciada','Ya podés presionar “Iniciar escaneo” y acercar los gafetes.');render();});
   $('endTrip').addEventListener('click',()=>{const trip=getTrip();if(!trip)return;if(!confirm('¿Finalizar la ruta actual? Los abordajes registrados quedarán en Reportes.'))return;stopScan();trip.end=new Date().toISOString();db.activeTripId=null;save();showFeedback('Ruta finalizada','El reporte quedó disponible en la pestaña Reportes.');render();});
   $('startCamera').addEventListener('click',startScan);$('stopCamera').addEventListener('click',stopScan);
@@ -129,6 +198,7 @@
     const rows=[['Fecha','Hora','Pasajero','Codigo','Ruta','Chofer','Unidad','ID del viaje'],...exported.map(r=>[formatDate(r.at),formatTime(r.at),r.name,r.code,r.route,r.driver,r.bus,r.tripId])];
     const csv='\ufeff'+rows.map(row=>row.map(safe).join(';')).join('\r\n');const url=URL.createObjectURL(new Blob([csv],{type:'text/csv;charset=utf-8;'}));const a=document.createElement('a');a.href=url;a.download='INNOVATRANS_reporte_'+new Date().toISOString().slice(0,10)+'.csv';document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),2000);
   });
+  if($('confirmSeatMobile')) $('confirmSeatMobile').addEventListener('click',()=>$('confirmSeat').click());
   window.addEventListener('pagehide',stopScan);window.addEventListener('innova-booking-updated',render);render();
 })();
 </script>
