@@ -168,6 +168,53 @@
       .scanner-ops{gap:8px}.scanner-ops .btn{min-height:50px}.pill{font-size:10px;padding:7px 10px}
     }
 
+
+/* Rediseño final: reservas y mapa, versión operativa */
+#booking .booking-card{max-width:880px;margin:0 auto;padding:24px;border-radius:16px}
+#booking .booking-heading{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px}
+#booking .booking-heading h2{margin:0;font-size:23px}
+#booking .booking-fields{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px 15px}
+#booking .booking-fields .field{margin-bottom:0}
+#booking .booking-legend{justify-content:center;margin:22px 0 4px;gap:16px;color:#67788e}
+#booking .booking-bus{margin:12px auto 18px;max-width:400px;background:#f8fafc;padding:20px;border:1px solid #dfe7ef}
+#booking .booking-status{background:transparent;border:0;padding:7px 0;text-align:center;margin:0 0 9px}
+#booking .booking-actions{max-width:400px;margin:0 auto}
+#booking .booking-actions .btn{min-height:49px}
+#mapdemo .map-floating-label{display:flex;gap:8px;align-items:center;max-width:230px}
+#mapdemo .map-floating-label strong{font-size:12px}
+#mapdemo .map-live-dot{flex:none}
+#mapdemo .map-legend{gap:10px}
+#mapdemo .map-disclaimer{font-size:11px;color:#6d7c8f}
+#mapdemo .map-disclaimer summary{cursor:pointer}
+#mapdemo .map-disclaimer p{margin:8px 0 0}
+@media(max-width:790px){
+  body:has(#booking.active) main#mainContent{padding:12px 12px 100px}
+  #booking .booking-card{padding:14px 12px;border:0;box-shadow:none;border-radius:0;background:transparent}
+  #booking .booking-heading{margin-bottom:16px}
+  #booking .booking-heading h2{font-size:19px}
+  #booking .booking-fields{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+  #booking .booking-fields .field:nth-child(4){grid-column:1/-1}
+  #booking .booking-fields .field select,#booking .booking-fields .field input{font-size:13px;min-width:0}
+  #booking .booking-legend{font-size:11px;justify-content:center;gap:8px 12px;margin:17px 0 8px}
+  #booking .booking-bus{max-width:340px;margin:9px auto 14px;padding:15px 12px;background:#fff;border-radius:20px}
+  #booking .seat{min-height:43px;height:43px}
+  #booking .booking-actions{display:flex;gap:8px}
+  #booking .booking-actions #confirmSeat{display:none}
+  #booking .booking-actions #cancelSeat{width:100%;min-height:44px}
+  #booking .mobile-cta{position:fixed;left:12px;right:12px;bottom:calc(75px + env(safe-area-inset-bottom));margin:0;z-index:90}
+  #booking .mobile-cta .btn{border-radius:12px}
+  body:has(#mapdemo.active) main#mainContent{padding:0 0 84px}
+  #mapdemo .map-screen-heading{display:none !important}
+  #mapdemo .map-stage .map-area{height:calc(100dvh - 280px);min-height:310px;max-height:none}
+  #mapdemo .map-floating-label{top:12px;left:12px}
+  #mapdemo .map-legend{left:12px;bottom:10px;font-size:10px;padding:8px 10px}
+  #mapdemo .map-bottom-panel{padding:15px 16px 16px}
+  #mapdemo .map-bottom-header h3{font-size:15px}
+  #mapdemo .map-status-line{margin:7px 0 10px}
+  #mapdemo .map-details{margin-top:10px;padding-top:10px}
+}
+@media(max-width:380px){#booking .booking-fields{grid-template-columns:1fr}#booking .booking-fields .field:nth-child(4){grid-column:auto}}
+
 </style>
   <!-- The JS library is fetched over HTTPS. The demo's camera needs HTTPS or localhost. -->
   <script src="https://unpkg.com/@zxing/browser@latest" defer></script>
@@ -237,17 +284,17 @@
   <p class="footnote">INNOVATRANS Web · Prototipo funcional para pruebas técnicas con información ficticia. Se necesita conexión para cargar el lector de cámara y HTTPS (o localhost) para solicitar acceso a ella.</p>
 <div class="foot-brand">INNOVA TRANSLOGIC · Prototipo de pruebas · Costa Rica</div>
 
-<section id="booking" class="screen"><div class="screen-panel"><div><h2>Reserva de asientos</h2><p>Elegí una unidad, una persona y tocá un asiento disponible para confirmar.</p></div><span class="screen-badge">Reservas</span></div><div class="card"><h2>Reserva de asientos</h2><p class="hint">Elegí una unidad y un pasajero de prueba para reservar un asiento. Es una demostración local: otros celulares no ven la reserva.</p>
-<div class="formgrid"><div class="field"><label for="bookingSize">Tipo de vehículo</label><select id="bookingSize"><option value="13">Buseta · 13 pasajeros</option><option value="25">Bus · 25 pasajeros</option></select></div><div class="field"><label for="bookingPerson">Colaborador</label><select id="bookingPerson"></select></div><div class="field"><label for="bookingDate">Fecha del viaje</label><input type="date" id="bookingDate"></div><div class="field"><label for="bookingRoute">Ruta</label><input id="bookingRoute" value="Santa Ana — Walmart (demo)" maxlength="100"></div></div>
-<div class="seat-guide"><span><i style="background:#178468"></i>Disponible</span><span><i style="background:#b63d4a"></i>Reservado</span><span><i style="background:#275daf"></i>Seleccionado</span><span><i style="background:#d69524"></i>Mi reserva</span></div>
-<div class="seat-layout"><div class="seat-top"><span class="tag">🚪 Entrada</span><span class="tag">🛞 Chofer</span></div><div class="seat-grid" id="seatsGrid"></div></div>
-<div class="info-status" id="bookingStatus">Seleccioná un asiento para continuar.</div><div class="actions"><button class="btn" id="confirmSeat">Confirmar reserva</button><button class="btn red" id="cancelSeat">Cancelar mi reserva</button></div><div class="mobile-cta"><button class="btn" id="confirmSeatMobile" type="button">Confirmar reserva</button></div><p class="footnote">Distribuciones de asientos ilustrativas, no planos oficiales. El cupo indicado corresponde a pasajeros, sin contar al chofer. Las reservas se guardan únicamente en este navegador.</p></div></section>
+<section id="booking" class="screen"><div class="screen-panel"><div><h2>Reserva de asientos</h2><p>Elegí una unidad, una persona y tocá un asiento disponible para confirmar.</p></div><span class="screen-badge">Reservas</span></div><div class="card booking-card"><div class="booking-heading"><h2>Elegí tu asiento</h2><span class="screen-badge">Reserva demo</span></div>
+<div class="formgrid booking-fields"><div class="field"><label for="bookingSize">Tipo de vehículo</label><select id="bookingSize"><option value="13">Buseta · 13 pasajeros</option><option value="25">Bus · 25 pasajeros</option></select></div><div class="field"><label for="bookingPerson">Colaborador</label><select id="bookingPerson"></select></div><div class="field"><label for="bookingDate">Fecha del viaje</label><input type="date" id="bookingDate"></div><div class="field"><label for="bookingRoute">Ruta</label><input id="bookingRoute" value="Santa Ana — Walmart (demo)" maxlength="100"></div></div>
+<div class="seat-guide booking-legend"><span><i style="background:#178468"></i>Disponible</span><span><i style="background:#b63d4a"></i>Reservado</span><span><i style="background:#275daf"></i>Seleccionado</span><span><i style="background:#d69524"></i>Mi reserva</span></div>
+<div class="seat-layout booking-bus"><div class="seat-top"><span class="tag">🚪 Entrada</span><span class="tag">🛞 Chofer</span></div><div class="seat-grid" id="seatsGrid"></div></div>
+<div class="info-status booking-status" id="bookingStatus">Seleccioná un asiento para continuar.</div><div class="actions booking-actions"><button class="btn" id="confirmSeat">Confirmar reserva</button><button class="btn red" id="cancelSeat">Cancelar mi reserva</button></div><div class="mobile-cta"><button class="btn" id="confirmSeatMobile" type="button">Confirmar reserva</button></div><p class="footnote">Distribuciones de asientos ilustrativas, no planos oficiales. El cupo indicado corresponde a pasajeros, sin contar al chofer. Las reservas se guardan únicamente en este navegador.</p></div></section>
 <section id="mapdemo" class="screen map-screen">
   <div class="screen-panel map-screen-heading"><div><h2>Mapa en tiempo real</h2><p>Ubicación del dispositivo y puntos de abordaje</p></div><span class="screen-badge">GPS de prueba</span></div>
   <div class="map-main">
     <div class="map-stage">
       <div class="map-area" id="routeMap" aria-label="Mapa de rutas y abordajes"></div>
-      <div class="map-floating-label"><span class="map-live-dot"></span><strong>Seguimiento de ruta</strong><small>INNOVATRANS</small></div>
+      <div class="map-floating-label"><span class="map-live-dot"></span><strong>Mapa de abordajes</strong></div>
       <div class="map-float-controls">
         <button class="map-round-btn" id="centerGps" title="Centrar mi ubicación" aria-label="Centrar mi ubicación">◎</button>
         <button class="map-round-btn" id="demoRoute" title="Mostrar recorrido de ejemplo" aria-label="Mostrar recorrido de ejemplo">⌁</button>
@@ -259,7 +306,7 @@
       <p class="map-status-line" id="gpsStatus" role="status">Activá el GPS para mostrar tu ubicación.</p>
       <div class="map-primary-actions"><button class="btn" id="enableGps">Activar GPS</button><button class="btn secondary" id="stopGps">Detener</button></div>
       <details class="map-details"><summary>Ver últimos abordajes <span>⌄</span></summary><div class="map-details-inner"><div class="info-status" id="gpsDetails">Todavía no se ha recibido una ubicación.</div><div id="gpsRecords" class="demo-list gps-log"><div class="empty">Aún no hay escaneos.</div></div></div></details>
-      <p class="map-disclaimer">El GPS indica la posición del teléfono que escanea, no la del pasajero. Esta demo no comparte ubicaciones entre dispositivos.</p>
+      <details class="map-disclaimer"><summary>Información del GPS</summary><p>La ubicación corresponde al dispositivo que escanea, no al pasajero. Esta demo no comparte datos entre dispositivos.</p></details>
     </div>
   </div>
 </section>

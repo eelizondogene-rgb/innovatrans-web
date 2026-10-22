@@ -1,0 +1,1 @@
+Nueva distribución minimalista de Reservas y Mapa. El registro de abordajes se conserva. Los datos siguen almacenándose localmente y la ubicación GPS necesita permisos y HTTPS. Reemplazá index.html en la raíz del repositorio GitHub Pages.
